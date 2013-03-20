@@ -35,14 +35,6 @@ Requirements
 - SWIG program/library (Ubuntu package: `swig`)
 - Java JDK 6 (the code should also work with JDK 1.5) with environmental variable `JAVA_HOME` properly set
 - Apache Ant
-* on OSX
-    * install gfortran from (http://hpc.sourceforge.net) or (http://sourceforge.net/projects/hpc/files/hpc/g95/gfortran-mlion.tar.gz)
-    * `sudo port install swig`
-    * `sudo port install swig-java`
-    * jni.h can't be found.. `export JAVA_HOME=/Library/Java/Home`
-	jni.h lives in: /System/Library/Frameworks/JavaVM.framework/Headers
-	`ln -s /System/Library/Frameworks/JavaVM.framework/Headers /Library/Java/Home/include`
-    * build and rename to .dylib:  `mv liblbfgsb_wrapper.so liblbfgsb_wrapper.dylib`
 
 
 
@@ -103,6 +95,15 @@ See:
 ### Building from source files
 * `ant` - create the library and javadocs
 * `ant test` - run tests using some popular minimization problems
+* on OSX these are the additional things you may need before `ant` will succeed.
+    * install gfortran from (http://hpc.sourceforge.net) or (http://sourceforge.net/projects/hpc/files/hpc/g95/gfortran-mlion.tar.gz)
+    * `sudo port install swig`
+    * `sudo port install swig-java`
+    * jni.h can't be found.. `export JAVA_HOME=/Library/Java/Home`
+	jni.h lives in: /System/Library/Frameworks/JavaVM.framework/Headers
+	`ln -s /System/Library/Frameworks/JavaVM.framework/Headers /Library/Java/Home/include`
+    * build with ant and rename .so to .dylib:  `mv liblbfgsb_wrapper.so liblbfgsb_wrapper.dylib`
+
 
 Warning: the `JAVA_PATH` environment variable has to be properly set since it is used while compiling the `liblbfgsb_wrapper.so` library.
 
